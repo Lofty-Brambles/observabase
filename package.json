@@ -1,0 +1,30 @@
+{
+  "name": "@observabase/base",
+  "license": "MIT",
+  "version": "0.0.0",
+  "keywords": [],
+  "description": "",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format:ci": "prettier . --write --cache --plugin-search-dir=.",
+    "version": "changeset version"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.0",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-turbo": "^0.0.7",
+    "prettier": "^2.8.3",
+    "turbo": "^1.7.2",
+    "typescript": "^4.9.5"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
