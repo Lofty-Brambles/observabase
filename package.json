@@ -10,7 +10,9 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format:ci": "prettier . --write --cache --plugin-search-dir=.",
-    "version": "changeset version"
+    "version": "changeset version",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest --passWithNoTests"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
@@ -19,9 +21,11 @@
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-turbo": "^0.0.7",
+    "eslint-plugin-vitest": "^0.0.32",
     "prettier": "^2.8.3",
     "turbo": "^1.7.2",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vitest": "^0.28.4"
   },
   "private": true,
   "engines": {

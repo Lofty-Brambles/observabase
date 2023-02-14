@@ -5,12 +5,17 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "turbo",
+    "vitest",
     "prettier"
   ],
   "rules": {
     "init-declarations": ["error", "always"],
     "quotes": ["error", "double", { "allowTemplateLiterals": true }],
     "semi": ["error", "always"],
-    "@typescript-eslint/consistent-indexed-object-style": ["error", "record"]
+    "@typescript-eslint/consistent-indexed-object-style": ["error", "record"],
+    "@typescript-eslint/ban-types": [
+      "error",
+      { "types": { "Function": false }, "extendDefaults": true }
+    ]
   }
 }

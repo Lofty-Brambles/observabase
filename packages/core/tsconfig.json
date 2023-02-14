@@ -4,6 +4,9 @@
     "typeRoots": ["./node_modules/@types"],
     "outDir": "dist",
     "baseUrl": "./",
-    "paths": {}
+    "paths": {
+      "@/*": ["src/*"],
+      "@types": ["src/_types.ts"]
+    }
   }
 }
