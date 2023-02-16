@@ -1,8 +1,14 @@
+// export type Primitives =
+// 	| "string"
+// 	| "number"
+// 	| "bigint"
+// 	| "boolean"
+// 	| "symbol"
+// 	| "undefined";
+
 export type Base = Record<PropertyKey, any>;
 
-export type Observer = (value?: any) => void;
-
-export type ObserverType = "onGet" | "preSet" | "postSet";
+export type Observer = (newValue?: any, oldValue?: any) => void;
 
 export type Options = {
 	observers: Map<string, Set<Observer>>;

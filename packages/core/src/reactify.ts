@@ -1,4 +1,11 @@
-import type { Base, MetaData, Observer, Options, Path } from "@/types";
+import type {
+	Base,
+	MetaData,
+	Observer,
+	Options,
+	Reactive,
+	Path,
+} from "@/types";
 
 /* Helper data */
 const defs: Options = {
@@ -30,8 +37,8 @@ export const reactify = <T extends Base>(raw: T, options: Options = defs) => {
 	 */
 	entries.forEach(([k, v]: [keyof T, any]) => {
 		if (!isObject(v)) return;
-		if (type > 1) raw[k] = isProxy(v) ? v : reactify(v);
-		else raw.set(k, isProxy(v) ? v : reactify(v));
+		if (type > 1) raw.set(k, isProxy(v) ? v : reactify(v));
+		else raw[k] = isProxy(v) ? v : reactify(v);
 	});
 
 	/**
@@ -52,9 +59,15 @@ export const reactify = <T extends Base>(raw: T, options: Options = defs) => {
 		_off: act("delete"),
 	};
 
-	const get: ProxyHandler<T>["get"] = (target, p, receiver) => {};
+	const set: ProxyHandler<T>["set"] = (...args) => {
+		const [target, prop, val] = args;
+		const old = Reflect.get(target, prop);
 
-	const proxy = new Proxy(raw, { get });
+		return true;
+	};
+
+	const proxy = new Proxy(raw, { set }) as Reactive<T>;
+	Object.entries(proxy)
 
 	return raw;
 };
